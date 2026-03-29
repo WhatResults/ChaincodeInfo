@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>queryResule</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/static/css/mdc.png" type="images/x-icon"/> 
+    <link href="/static/css/reset.css" rel="stylesheet">
+    <!-- Bootstrap3.3.5 CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/queryResult.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- <div class="logo">
+        <img src="/static/css/mdc.png" alt="Logo" width="300" height="100">
+      </div> -->
+    <div class="container">
+        <div class="queryResule">
+            <h2>电子证书信息查询结果</h2>
+            {{if .History}}
+            <div id="tableDiv">
+                <table id="table" style="margin: 0 auto;">
+                    <tr>
+                        <td>姓名</td>
+                        <td>身份证号</td>
+                        <td>证书编号</td>
+                        <td>认证领域</td>
+                        <td>认证等级</td>
+                        <td>有效性</td>
+                        <td>颁布机构</td>
+                        <td>备注</td>
+                    </tr>
+                    {{range .Edu.Historys}}
+                    <tr>
+                        <td>{{.ChaincodeInfo.Name}}</td>
+                        <td>{{.ChaincodeInfo.CertNo}}</td>
+                        <td>{{.ChaincodeInfo.CopyRightID}}</td>
+                        <td>{{.ChaincodeInfo.DoneDate}}</td>
+                        <td>{{.ChaincodeInfo.EnrollDate}}</td>
+                        <td>{{.ChaincodeInfo.NowState}}</td>
+                        <td>{{.ChaincodeInfo.Major}}</td>
+                        <td>{{.ChaincodeInfo.Level}}</td>
+                    </tr>
+                    {{end}}
+                </table>
+            </div>
+            {{end}}
+            <div class="top">
+                <div class="left">
+                    <p>
+                        <span>姓名：</span>
+                        <span>{{.Edu.Name}}</span>
+                    </p>
+                    <p>
+                        <span>籍贯：</span>
+                        <span>{{.Edu.Creator}}</span>
+                    </p>
+                    <p>
+                        <span>民族：</span>
+                        <span>{{.Edu.Nation}}</span>
+                    </p>
+                    <p>
+                        <span>认证等级：</span>
+                        <span>{{.Edu.EnrollDate}}</span>
+                    </p>
+                    <p>
+                        <span>认证领域：</span>
+                        <span>{{.Edu.DoneDate}}</span>
+                    </p>
+                    <p>
+                        <span>认证方式：</span>
+                        <span>{{.Edu.QuaType}}</span>
+                    </p>
+                    <p>
+                        <span>备注：</span>
+                        <span>{{.Edu.Level}}</span>
+                    </p>
+                    <p>
+                        <span>国内/国外：</span>
+                        <span>{{.Edu.CopyRightLevel}}</span>
+                    </p>
+                </div>
+                <div class="right">
+                    <p>
+                        <span>性别：</span>
+                        <span>{{.Edu.SignDate}}</span>
+                    </p>
+                    <p>
+                        <span>颁布日期：</span>
+                        <span>{{.Edu.Holder}}</span>
+                    </p>
+                    <p>
+                        <span>证书编号：</span>
+                        <span>{{.Edu.CopyRightID}}</span>
+                    </p>
+                    <p>
+                        <span>有效性：</span>
+                        <span>{{.Edu.NowState}}</span>
+                    </p>
+                    <p>
+                        <span>颁布机构：</span>
+                        <span>{{.Edu.Major}}</span>
+                    </p>
+
+                    <p>
+                        <span>证书类型：</span>
+                        <span>{{.Edu.Mode}}</span>
+                    </p>
+                    <p>
+                        <span>有效期：</span>
+                        <span>{{.Edu.Length}}</span>
+                    </p>
+                    <p>
+                        <span>身份证号：</span>
+                        <span>{{.Edu.CertNo}}</span>
+                    </p>
+                </div>
+                <div class="headImg">
+                    <img src="{{.Edu.Photo}}" alt="">
+                </div>
+            </div>
+            <p>
+                {{if .CurrentUser.IsAdmin }}
+                <a href="/modify?certNo={{.Edu.CertNo}}&name={{.Edu.Name}}">修改信息</a>
+                {{end}}
+                <a href="/index">返回首页</a>
+            </p>
+            <div class="bottom">
+                <p><b>声明</b></p>
+                <p>未经电子证书信息权属人同意,不得将本材科用于违背权属人意愿之用途。</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
