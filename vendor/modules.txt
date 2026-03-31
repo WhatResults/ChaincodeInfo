@@ -53,7 +53,9 @@ github.com/gofiber/fiber/v2/internal/go-json/runtime
 github.com/gofiber/fiber/v2/internal/isatty
 github.com/gofiber/fiber/v2/internal/msgp
 github.com/gofiber/fiber/v2/internal/schema
+github.com/gofiber/fiber/v2/internal/storage/memory
 github.com/gofiber/fiber/v2/internal/uuid
+github.com/gofiber/fiber/v2/middleware/session
 github.com/gofiber/fiber/v2/utils
 # github.com/gofiber/template v1.6.26
 ## explicit

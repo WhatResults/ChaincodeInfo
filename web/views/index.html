@@ -5,46 +5,38 @@
     <meta charset="utf-8">
     <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-    <title>基于区块链技术的电子证书系统</title>
+    <title>基于区块链技术的电子数据存证系统</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="mdc.png" type="images/x-icon"/> 
-    <link rel="shortcut icon" href="/static/css/mdc0.png" type="images/x-icon"/> 
+    <link rel="shortcut icon" href="mdc.png" type="images/x-icon"/>
+    <link rel="shortcut icon" href="/static/css/mdc0.png" type="images/x-icon"/>
     <link href="/static/css/reset.css" rel="stylesheet">
-    <!-- Bootstrap3.3.5 CSS -->
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/css/index.css" rel="stylesheet">
 </head>
 
 <body>
-  <!-- <div class="logo">
-        <img src="/static/css/mdc.png" alt="Logo" width="300" height="100">
-  </div> -->
+    <div style="width:100%; padding:15px 30px 0 30px; box-sizing:border-box; text-align:right;">
+        <span style="margin-right:15px;">
+            当前用户：{{.CurrentUser.LoginName}}
+            {{if .CurrentUser.IsAdmin}}（管理员）{{else}}（普通用户）{{end}}
+        </span>
+        <a href="/logout">退出登录</a>
+    </div>
+
     <div class="h_m_l main">
         <h2>基于区块链技术的电子证书系统</h2>
+
         <div class="h_m_div3">
             <div class="h_m_div3_t">
                 <h3 class="i01"><a href="/help">全部功能</a></h3>
                 可查询上链电子证书信息。
             </div>
-            <!-- <ul class="h_m_div3_ul clearfix">
-                <li><span class="fontBold color333">采购管理</span><br>
-                    <a>开发中...</a><br>
-                    &nbsp; <br>
-                    &nbsp; <br>
-                    &nbsp;
-                </li>
-                <li><span class="fontBold color333">库存管理</span><br>
-                    <a>开发中...</a>
-                </li>
-                <div class="logo">
-                </div>
-            </ul> -->
         </div>
+
         <div class="h_m_div3">
             <div class="h_m_div3_t">
                 <h3 class="i02"><a href="/queryPage">快速查询</a></h3>
                 在线快捷申请、验证。
-                <!-- 在电子证书信息查询基础上，提供便捷的在线验证服务。 -->
             </div>
             <ul class="h_m_div3_ul clearfix">
                 <li><span class="fontBold color333">身份证号与名称</span><br>
@@ -60,18 +52,30 @@
                 </div>
             </ul>
         </div>
-        <!-- <div class="h_m_div3">
+
+        {{if .CurrentUser.IsAdmin}}
+        <div class="h_m_div3">
             <div class="h_m_div3_t">
-                <h3 class="i03"><a>声明</a></h3>
-                信息保护，人人有责！
+                <h3 class="i03"><a href="/addEdu">管理员功能</a></h3>
+                管理员可新增电子证书信息。
             </div>
-        </div> -->
+            <ul class="h_m_div3_ul clearfix">
+                <li><span class="fontBold color333">电子证书管理</span><br>
+                    <a href="/addEdu">新增信息</a><br>
+                    &nbsp; <br>
+                    &nbsp; <br>
+                    &nbsp;
+                </li>
+                <div class="logo">
+                </div>
+            </ul>
+        </div>
+        {{end}}
     </div>
 </body>
-<!-- jQuery1.11.3 (necessary for Bootstrap's JavaScript plugins) -->
-<script src="/static/js/jquery.min.js "></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="/static/js/bootstrap.min.js "></script>
+
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
 <script type="text/javascript">
     $(function () {
         // index

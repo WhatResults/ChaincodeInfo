@@ -28,17 +28,22 @@ func NewServer(ss *service.ServiceSetup) *Server {
 // 创建注册路由
 func (s *Server) registerRoutes() {
 	s.app.Static("/static/", "web/static")
+	// 登录相关
 	s.app.Get("/", routers.LoginView())
 	s.app.Post("/login", routers.Login())
 	s.app.Get("/logout", routers.Logout())
+	
+	// 需要登录
 	s.app.Get("/index", routers.Index())
 	s.app.Get("/help", routers.Help())
-	s.app.Get("/addEdu", routers.AddEduView())
-	s.app.Post("/addEdu", routers.AddEdu(s.service))
 	s.app.Get("/queryPage", routers.QueryPage())
 	s.app.Post("/query", routers.FindCertByNoAndName(s.service))
 	s.app.Get("/queryPage2", routers.QueryPage2())
 	s.app.Post("/query2", routers.FindCertByID(s.service))
+
+	// 仅管理员
+	s.app.Get("/addEdu", routers.AddEduView())
+	s.app.Post("/addEdu", routers.AddEdu(s.service))
 	s.app.Get("/modify", routers.ModifyView(s.service))
 	s.app.Post("/modify", routers.Modify(s.service))
 	s.app.Post("/upload", routers.Upload())
